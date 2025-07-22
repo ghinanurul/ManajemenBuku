@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Buku</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <ul id="book-list"></ul>
+    <script>
+        fetch('http://127.0.0.1:8000/api/books')
+            .then(response => response.json())
+            .then(books => {
+                const list = document.getElementById('book-list');
+                books.forEach(book => {
+                    const li = document.createElement('li');
+                    li.innerText = `${book.title} - ${book.author} (${book.year})`;
+                    list.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>
